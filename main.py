@@ -155,7 +155,7 @@ def main():
             except StopIteration:
                 sorting = False
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load(f'{PATH}/visualizador/resolve.mp3')
+                pygame.mixer.music.load(f'{PATH}/resolve.mp3')
                 pygame.mixer.music.play()
         else:
             draw(draw_info, sorting_algo_name, ascending)
@@ -174,7 +174,7 @@ def main():
                 pygame.mixer.music.stop()
             elif event.key == pygame.K_SPACE and sorting == False:
                 sorting = True
-                pygame.mixer.music.load(f'{PATH}/visualizador/expect.mp3')
+                pygame.mixer.music.load(f'{PATH}/expect.mp3')
                 pygame.mixer.music.play()
                 sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
             elif event.key == pygame.K_a and not sorting:
