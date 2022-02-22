@@ -1,2 +1,3 @@
 # Visualizador de Algoritmos
- Software em Python para visualizar algoritmos com formas, cores e sons
+
+Aplicação desenvolvida utilizando a biblioteca *Pygame* que permite o usuário visualizar diversos algoritmos de ordenação funcionando em tempo real. também conta com cores e sons dinâmicos para melhorar a experiência do usuário. 
