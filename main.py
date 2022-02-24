@@ -52,7 +52,7 @@ def draw(draw_info, algo_name, ascending):
     controls = draw_info.FONT.render('R - Resetar | ESPAÇO - Ordenar | A - Ascendente | D - Descendente', 1, draw_info.WHITE)
     draw_info.window.blit(controls, ( (draw_info.width - controls.get_width() )/ 2, 50))
 
-    sorting = draw_info.FONT.render('I - Insertion Sort | B - Bubble Sort', 1, draw_info.WHITE)
+    sorting = draw_info.FONT.render('I - Insertion Sort | B - Bubble Sort | C - Comb Sort', 1, draw_info.WHITE)
     draw_info.window.blit(sorting, ( (draw_info.width - sorting.get_width() )/ 2, 80))
 
     draw_list(draw_info)
@@ -129,6 +129,26 @@ def insertion_sort(draw_info, ascending=True):
 
 	return lst
 
+def comb_sort(draw_info, ascending=True):
+    lst = draw_info.lst
+    gap = math.floor(len(lst) / 1.3)
+    i = 0
+
+    while gap > 0 and i != len(lst) - 1:
+        i = 0
+
+        while i + gap < len(lst):
+
+            if lst[i] > lst[i+gap]:
+                lst[i], lst[i+gap] = lst[i+gap], lst[i]
+
+            draw_list(draw_info, {i: draw_info.GREEN, i+gap: draw_info.RED}, True)
+
+            i += 1
+            yield True
+        
+        gap = math.floor(gap / 1.3)
+
 def main():
     run = True
     clock = pygame.time.Clock()
@@ -187,6 +207,9 @@ def main():
             elif event.key == pygame.K_b and not sorting:
                 sorting_algorithm = bubble_sort
                 sorting_algo_name = 'Bubble Sort'
+            elif event.key == pygame.K_c and not sorting:
+                sorting_algorithm = comb_sort
+                sorting_algo_name = 'Comb Sort'
 
 
     pygame.quit()
