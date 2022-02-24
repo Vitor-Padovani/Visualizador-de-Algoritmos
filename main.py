@@ -14,12 +14,6 @@ class DrawInformation:
     BLUE = 0, 0, 255
     BACKGROUND_COLOR = BLACK
 
-    GRADIENTS = [
-        (143, 143, 143),
-        (185, 185, 185),
-        (227, 227, 227)
-    ]
-
     FONT = pygame.font.SysFont('consolas', 20)
     LARGE_FONT = pygame.font.SysFont('consolas', 40)
 
@@ -73,8 +67,6 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
 
         hue = int(math.floor(val * 1.2))
         color = (hue, hue, 255 - hue)
-
-        #color = draw_info.GRADIENTS[i % 3]
 
         if i in color_positions:
             color = color_positions[i]
@@ -139,7 +131,7 @@ def comb_sort(draw_info, ascending=True):
 
         while i + gap < len(lst):
 
-            if lst[i] > lst[i+gap]:
+            if (lst[i] > lst[i+gap] and ascending) or (lst[i] < lst[i+gap] and not ascending):
                 lst[i], lst[i+gap] = lst[i+gap], lst[i]
 
             draw_list(draw_info, {i: draw_info.GREEN, i+gap: draw_info.RED}, True)
