@@ -6,6 +6,9 @@ pygame.init()
 
 PATH = os.getcwd().replace('\\', '/')
 
+img = pygame.image.load('./img/icon.png')
+pygame.display.set_icon(img)
+
 class DrawInformation:
     BLACK = 0, 0, 0
     WHITE = 255, 255, 255
